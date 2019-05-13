@@ -1,0 +1,34 @@
+ul {
+  display: flex;
+  list-style: none;
+  min-height: 10vh;
+
+  li {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    flex: 1;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, #d1e890, #93b827);
+    transition: all 0.5s;
+
+    .link {
+      display: block;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: white;
+      height: 100%;
+    }
+
+    .active {
+      background-image: linear-gradient(to bottom right, #f4b36a, #b9680d);
+      height: 100%;
+    }
+
+    &:hover {
+      letter-spacing: 4px;
+    }
+  }
+}

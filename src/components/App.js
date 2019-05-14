@@ -8,37 +8,44 @@ import ShoppingList from "./ShoppingList.js";
 
 class App extends React.Component {
   state = {
-    products: [
-      { id: 1, name: "jablka", type: "owoce", toBuy: false, bought: false },
-      { id: 2, name: "mleko", type: "nabiał", toBuy: false, bought: false },
-      { id: 3, name: "szynka", type: "mieso", toBuy: false, bought: false }
-    ]
+    pieczywo: [{ id: 0, name: "chleb" }],
+    owoce: [{ id: 0, name: "jabłka" }],
+    nabial: [{ id: 0, name: "mleko" }],
+    mieso: [],
+    puszki: [],
+    kawa: [],
+    makarony: [],
+    slodycze: [],
+    czystosc: [],
+    napoje: [],
+    alkohole: [],
+    biurowe: [],
+    kosmetyki: [],
+    ubrania: []
   };
 
-  handleAddProduct = product => {
-    // check if that product already exists in this.state.products and find its index
-    const index = this.state.products.findIndex(
-      current => current.name === product.name
+  handleAddProduct = item => {
+    // check if that item already exists inside our product list
+    const index = this.state[item.type].findIndex(
+      current => current.name === item.name
     );
+    // if it doesnt
+    if (!(index + 1)) {
+      // calculate its ID
+      const newID = this.state[item.type].length;
 
-    // if it doesnt exists create and add it to the products list
-    if (index === -1) {
-      // calculate ID for new product
-      const newID = this.state.products[this.state.products.length - 1].id + 1;
-
-      // create new product
+      // create that product
       const newProduct = {
         id: newID,
-        name: product.name,
-        type: product.type,
-        toBuy: false,
-        bought: false
+        name: item.name
       };
 
-      // add new product to state and rerender the App
+      // add that product to state (update state)
       this.setState(prevState => ({
-        products: [...prevState.products, newProduct]
+        [item.type]: [...prevState[item.type], newProduct]
       }));
+    } else {
+      console.log(`index pod ktorym znaleziono pozycje to: ${index}`);
     }
   };
 
@@ -55,8 +62,11 @@ class App extends React.Component {
               render={() => <AddProduct addItem={this.handleAddProduct} />}
             />
 
-            <Route path="/products" exact component={Products} />
-            <Route path="/shoppinglist" exact component={ShoppingList} />
+            <Route
+              path="/products"
+              render={() => <Products products={this.state} />}
+            />
+            <Route path="/shoppinglist" component={ShoppingList} />
           </Switch>
         </section>
       </BrowserRouter>

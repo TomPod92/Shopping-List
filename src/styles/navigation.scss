@@ -7,28 +7,41 @@ ul {
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
-    text-align: center;
     letter-spacing: 2px;
     flex: 1;
-    align-items: center;
-    background-image: linear-gradient(to bottom right, #d1e890, #93b827);
+    background-color: #93b827;
     transition: all 0.5s;
 
     .link {
-      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 1rem 2rem;
       text-decoration: none;
+      text-align: center;
       color: white;
       height: 100%;
     }
 
     .active {
-      background-image: linear-gradient(to bottom right, #f4b36a, #b9680d);
+      background-color: #b9680d;
+      transform: scale(1.1);
       height: 100%;
-    }
+      box-shadow: 0 0 20px #00000073;
+      position: relative;
 
-    &:hover {
-      letter-spacing: 4px;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -14px;
+        left: 50%;
+        transform: translate(-25px, 0);
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 15px solid #b9680d;
+      }
     }
   }
 }

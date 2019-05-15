@@ -11,6 +11,7 @@ const PageShop = props => {
                 type={currentID} 
                 productList={props.products.filter(currentProduct => currentProduct.type === currentID)}
                 handleAddToShoppingList={props.handleAddToShoppingList}
+                flag={'toBuy'}
                 />)
           }
         

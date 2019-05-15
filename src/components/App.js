@@ -53,7 +53,7 @@ class App extends React.Component {
     }
   };
 
-  handleAddToShoppingList = (id) => {
+  handleAddToShoppingList = (id, flag) => {
     // find id and index of clicked element
     const index = this.state.products.findIndex( current => current.id === id);
 
@@ -61,7 +61,7 @@ class App extends React.Component {
     const newState = this.state.products;
 
     // change clicked element "toBuy" value to the opposite
-    newState[index].toBuy = !newState[index].toBuy;
+    newState[index][flag] = !newState[index][flag];
 
     // update the state with new element
     this.setState({
@@ -104,7 +104,6 @@ class App extends React.Component {
                   products={this.state.products.filter(currentProduct => currentProduct.toBuy === true)}
                   typeIDsArray={this.typeIDsArray}
                   handleAddToShoppingList={this.handleAddToShoppingList}
-                  handleMarkAsBought={this.handleMarkAsBought}
                 />
               )}
             />>

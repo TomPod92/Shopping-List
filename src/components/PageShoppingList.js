@@ -13,7 +13,7 @@ const PageShoppingList = (props) => {
                 productList={props.products.filter(currentProduct => currentProduct.type === currentID)}
                 handleAddToShoppingList={props.handleAddToShoppingList}
                 
-                handleMarkAsBought={props.handleMarkAsBought}
+                flag={'bought'}
                 />)
           }
         </div>

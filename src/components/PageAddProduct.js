@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/addProduct.scss";
+import "../styles/PageAddProduct.scss";
 
-class AddProduct extends React.Component {
+class PageAddProduct extends React.Component {
   state = {
     name: "",
     type: "pieczywo"
@@ -23,7 +23,7 @@ class AddProduct extends React.Component {
               name: "",
               type: "pieczywo"
             });
-            this.props.addItem(this.state);
+            this.props.handleAddProduct(this.state);
           }}
           className="form"
         >
@@ -54,17 +54,18 @@ class AddProduct extends React.Component {
             className="form__input"
           >
             <option value="pieczywo">Pieczywo</option>
-            <option value="owoce">Owoce i warzywa</option>
-            <option value="nabial">Nabiał</option>
-            <option value="mieso">Mięsa i sery</option>
-            <option value="puszki">Puszki i słoiki</option>
-            <option value="kawa">Kawa i herbata</option>
+            <option value="owoce i warzywa">Owoce i warzywa</option>
+            <option value="nabiał">Nabiał</option>
+            <option value="mięsa i sery">Mięsa i sery</option>
+            <option value="mrożonki i przyprawy">Mrożonki i przyprawy</option>
+            <option value="słoiki i puszki">Puszki i słoiki</option>
+            <option value="kawa i herbata">Kawa i herbata</option>
             <option value="makarony">Makarony i ryż</option>
-            <option value="slodycze">Słodycze</option>
-            <option value="czystosc">Środki czystości</option>
+            <option value="słodycze">Słodycze</option>
+            <option value="środki czystości">Środki czystości</option>
             <option value="napoje">Napoje</option>
             <option value="alkohole">Alkohole</option>
-            <option value="biurowe">Art.biurowe</option>
+            <option value="art.papiernicze">Art.papiernicze</option>
             <option value="kosmetyki">Kosmetyki</option>
             <option value="ubrania">Ubrania</option>
           </select>
@@ -76,4 +77,4 @@ class AddProduct extends React.Component {
   }
 }
 
-export default AddProduct;
+export default PageAddProduct;

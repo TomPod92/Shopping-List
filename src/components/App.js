@@ -2,57 +2,75 @@ import React from "react";
 import "../styles/App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navigation from "./Navigation.js";
-import AddProduct from "./AddProduct.js";
-import Shop from "./Shop.js";
-import ShoppingList from "./ShoppingList.js";
+import PageAddProduct from "./PageAddProduct.js";
+import PageShop from "./PageShop.js";
+import PageShoppingList from "./PageShoppingList.js";
 
 class App extends React.Component {
   state = {
-    pieczywo: [{ id: 'pieczywo1', name: "chleb", toBuy: false, bought: false }],
-    owoce: [{ id: 'owoce0', name: "jabłka", toBuy: false, bought: false }],
-    nabial: [{ id: 'nabial0', name: "mleko", toBuy: false, bought: false }],
-    mieso: [{ id: 'mieso0', name: "mielone", toBuy: false, bought: false }],
-    puszki: [{ id: 'puszki0', name: "fasolka", toBuy: false, bought: false }],
-    kawa: [{ id: 'kawa0', name: "kawa", toBuy: false, bought: false }],
-    makarony: [{ id: 'makarony0', name: "ryż", toBuy: false, bought: false }],
-    slodycze: [{ id: 'slodycze0', name: "czekolada", toBuy: false, bought: false }],
-    czystosc: [{ id: 'czystosc0', name: "papier", toBuy: false, bought: false }],
-    napoje: [{ id: 'napoje0', name: "woda", toBuy: false, bought: false }],
-    alkohole: [{ id: 'alkohole0', name: "piwo", toBuy: false, bought: false }],
-    biurowe: [{ id: 'biurowe0', name: "zeszyt", toBuy: false, bought: false }],
-    kosmetyki: [{ id: 'kosmetyki0', name: "pasta", toBuy: false, bought: false }],
-    ubrania: [{ id: 'ubrania0', name: "kapcie", toBuy: false, bought: false }]
+    products: [
+      {id:0, name:'chleb', type: 'pieczywo', typeID:0, toBuy:false, bought:false},
+      {id:1, name:'papryka', type: 'owoce i warzywa', typeID:1, toBuy:false, bought:false},
+      {id:2, name:'jajka', type: 'nabiał', typeID:2, toBuy:false, bought:false},
+      {id:3, name:'szynka', type: 'mięsa i sery', typeID:3, toBuy:false, bought:false},
+      {id:4, name:'czosnek', type: 'mrożonki i przyprawy', typeID:4, toBuy:false, bought:false},
+      {id:5, name:'fasolka', type: 'słoiki i puszki', typeID:5, toBuy:false, bought:false},
+      {id:6, name:'herbata', type: 'kawa i herbata', typeID:6, toBuy:false, bought:false},
+      {id:7, name:'ryż', type: 'makarony', typeID:7, toBuy:false, bought:false},
+      {id:8, name:'czekolada', type: 'słodycze', typeID:8, toBuy:false, bought:false},
+      {id:9, name:'papier toaletowy', type: 'środki czystości', typeID:9, toBuy:false, bought:false},
+      {id:10, name:'woda', type: 'napoje', typeID:10, toBuy:false, bought:false},
+      {id:11, name:'piwo', type: 'alkohole', typeID:11, toBuy:false, bought:false},
+      {id:12, name:'zeszyt', type: 'art.papiernicze', typeID:12, toBuy:false, bought:false},
+      {id:13, name:'pasta', type: 'kosmetyki', typeID:13, toBuy:false, bought:false},
+      {id:14, name:'kapcie', type: 'ubrania', typeID:14, toBuy:false, bought:false}
+    ]
   };
 
+  typeIDsArray = ['pieczywo', 'owoce i warzywa', 'nabiał', 'mięsa i sery', 'mrożonki i przyprawy', 'słoiki i puszki', 'kawa i herbata', 'makarony', 'słodycze', 'środki czystości', 'napoje', 'alkohole', 'art.papiernicze', 'kosmetyki', 'ubrania'];
+
   handleAddProduct = item => {
-    // check if that item already exists inside our product list
-    const index = this.state[item.type].findIndex(
-      current => current.name === item.name
-    );
-    // if it doesnt
-    if (!(index + 1)) {
+    // check if it already exists
+    const index = this.state.products.findIndex( current => current.name === item.name);
+
+    // if it doesnt exits
+    if(!(index+1)) {
       // calculate its ID
-      const newID = item.type + this.state[item.type].length;
+      const newID = this.state.products.length;
 
-      // create that product
+      // calculate its type ID
+      const newTypeID = this.typeIDsArray.findIndex( current => current === item.type);
+
+      // create product object
       const newProduct = {
-        id: newID,
-        name: item.name,
-        toBuy: false,
-        bought: false
-      };
+        id:newID, name:item.name, type: item.type, typeID: newTypeID, toBuy:false, bought:false
+      }
 
-      // add that product to state (update state)
-      this.setState(prevState => ({
-        [item.type]: [...prevState[item.type], newProduct]
-      }));
-    } else {
-      console.log(`index pod ktorym znaleziono pozycje to: ${index}`);
+      // add it to the state
+      this.setState( prevState => (
+        {products:[...prevState.products, newProduct]}
+      ))
     }
   };
 
-  handleAddToShoppingList = () => {
-    console.log(' handleAddToShoppingList dziala');
+  handleAddToShoppingList = (id) => {
+    // find id and index of clicked element
+    const index = this.state.products.findIndex( current => current.id === id);
+
+    // create a copy of state
+    const newState = this.state.products;
+
+    // change clicked element "toBuy" value to the opposite
+    newState[index].toBuy = !newState[index].toBuy;
+
+    // update the state with new element
+    this.setState({
+      products: newState
+    })
+  };
+
+  handleMarkAsBought = () => {
+    console.log(`handleMarkAsBought dziala`)
   }
 
   render() {
@@ -65,11 +83,31 @@ class App extends React.Component {
             <Route
               path="/"
               exact
-              render={() => <AddProduct addItem={this.handleAddProduct} />}
+              render={() => <PageAddProduct handleAddProduct={this.handleAddProduct}/>}
             />
 
-            <Route path="/shop" render={() => <Shop products={this.state} handleAddToShoppingList={this.handleAddToShoppingList}/>} />
-            <Route path="/shoppinglist" component={ShoppingList} />
+            <Route
+              path="/pageShop"
+              render={() => (
+                <PageShop
+                  products={this.state.products}
+                  typeIDsArray={this.typeIDsArray}
+                  handleAddToShoppingList={this.handleAddToShoppingList}
+                />
+              )}
+            />
+
+            <Route
+              path="/pageShoppinglist"
+              render={() => (
+                <PageShoppingList
+                  products={this.state.products.filter(currentProduct => currentProduct.toBuy === true)}
+                  typeIDsArray={this.typeIDsArray}
+                  handleAddToShoppingList={this.handleAddToShoppingList}
+                  handleMarkAsBought={this.handleMarkAsBought}
+                />
+              )}
+            />>
           </Switch>
         </section>
       </BrowserRouter>

@@ -7,10 +7,10 @@ const Navigation = () => {
     return (
         <header>
         <nav>
-          <ul>
-            <li><NavLink to="/" exact className="link">Add Product</NavLink></li>
-            <li><NavLink to="/shop" className="link">Shop</NavLink></li>
-            <li><NavLink to="/shoppinglist" className="link">Shopping List</NavLink></li>
+          <ul className="main-Nav">
+            <li className="nav-item"><NavLink to="/" exact className="link">Add Product</NavLink></li>
+            <li className="nav-item"><NavLink to="/pageShop" className="link">Shop</NavLink></li>
+            <li className="nav-item"><NavLink to="/pageShoppinglist" className="link">Shopping List</NavLink></li>
           </ul>
         </nav>
       </header>

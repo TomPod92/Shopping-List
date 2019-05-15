@@ -1,9 +1,9 @@
-ul {
+.main-Nav {
   display: flex;
   list-style: none;
   min-height: 10vh;
 
-  li {
+  .nav-item {
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;

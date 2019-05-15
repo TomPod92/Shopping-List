@@ -9,7 +9,7 @@ const Navigation = () => {
         <nav>
           <ul>
             <li><NavLink to="/" exact className="link">Add Product</NavLink></li>
-            <li><NavLink to="/products" className="link">Products</NavLink></li>
+            <li><NavLink to="/shop" className="link">Shop</NavLink></li>
             <li><NavLink to="/shoppinglist" className="link">Shopping List</NavLink></li>
           </ul>
         </nav>

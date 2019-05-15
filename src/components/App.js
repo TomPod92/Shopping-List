@@ -3,25 +3,25 @@ import "../styles/App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navigation from "./Navigation.js";
 import AddProduct from "./AddProduct.js";
-import Products from "./Products.js";
+import Shop from "./Shop.js";
 import ShoppingList from "./ShoppingList.js";
 
 class App extends React.Component {
   state = {
-    pieczywo: [{ id: 0, name: "chleb" }],
-    owoce: [{ id: 0, name: "jabłka" }],
-    nabial: [{ id: 0, name: "mleko" }],
-    mieso: [],
-    puszki: [],
-    kawa: [],
-    makarony: [],
-    slodycze: [],
-    czystosc: [],
-    napoje: [],
-    alkohole: [],
-    biurowe: [],
-    kosmetyki: [],
-    ubrania: []
+    pieczywo: [{ id: 'pieczywo1', name: "chleb", toBuy: false, bought: false }],
+    owoce: [{ id: 'owoce0', name: "jabłka", toBuy: false, bought: false }],
+    nabial: [{ id: 'nabial0', name: "mleko", toBuy: false, bought: false }],
+    mieso: [{ id: 'mieso0', name: "mielone", toBuy: false, bought: false }],
+    puszki: [{ id: 'puszki0', name: "fasolka", toBuy: false, bought: false }],
+    kawa: [{ id: 'kawa0', name: "kawa", toBuy: false, bought: false }],
+    makarony: [{ id: 'makarony0', name: "ryż", toBuy: false, bought: false }],
+    slodycze: [{ id: 'slodycze0', name: "czekolada", toBuy: false, bought: false }],
+    czystosc: [{ id: 'czystosc0', name: "papier", toBuy: false, bought: false }],
+    napoje: [{ id: 'napoje0', name: "woda", toBuy: false, bought: false }],
+    alkohole: [{ id: 'alkohole0', name: "piwo", toBuy: false, bought: false }],
+    biurowe: [{ id: 'biurowe0', name: "zeszyt", toBuy: false, bought: false }],
+    kosmetyki: [{ id: 'kosmetyki0', name: "pasta", toBuy: false, bought: false }],
+    ubrania: [{ id: 'ubrania0', name: "kapcie", toBuy: false, bought: false }]
   };
 
   handleAddProduct = item => {
@@ -32,12 +32,14 @@ class App extends React.Component {
     // if it doesnt
     if (!(index + 1)) {
       // calculate its ID
-      const newID = this.state[item.type].length;
+      const newID = item.type + this.state[item.type].length;
 
       // create that product
       const newProduct = {
         id: newID,
-        name: item.name
+        name: item.name,
+        toBuy: false,
+        bought: false
       };
 
       // add that product to state (update state)
@@ -48,6 +50,10 @@ class App extends React.Component {
       console.log(`index pod ktorym znaleziono pozycje to: ${index}`);
     }
   };
+
+  handleAddToShoppingList = () => {
+    console.log(' handleAddToShoppingList dziala');
+  }
 
   render() {
     return (
@@ -62,10 +68,7 @@ class App extends React.Component {
               render={() => <AddProduct addItem={this.handleAddProduct} />}
             />
 
-            <Route
-              path="/products"
-              render={() => <Products products={this.state} />}
-            />
+            <Route path="/shop" render={() => <Shop products={this.state} handleAddToShoppingList={this.handleAddToShoppingList}/>} />
             <Route path="/shoppinglist" component={ShoppingList} />
           </Switch>
         </section>

@@ -53,24 +53,41 @@ class App extends React.Component {
     }
   };
 
-  handleAddToShoppingList = (id, flag) => {
+  handleClickOnProduct = (id, flag) => {
     // find id and index of clicked element
     const index = this.state.products.findIndex( current => current.id === id);
 
     // create a copy of state
     const newState = this.state.products;
 
-    // change clicked element "toBuy" value to the opposite
-    newState[index][flag] = !newState[index][flag];
+    // change clicked element "toBuy" or "bought" (depending on flag = 'toBuy' or 'bought') 
+    if(flag === 'toBuy') {
+      newState[index].toBuy = !newState[index].toBuy;
+      newState[index].bought = false;
+    } else if (flag === 'bought') {
+      newState[index].bought = !newState[index].bought;
+    }    
 
-    // update the state with new element
+    // update the state with the new element
     this.setState({
       products: newState
     })
   };
 
-  handleMarkAsBought = () => {
-    console.log(`handleMarkAsBought dziala`)
+  handleDeleteFromShoppingList = () => {
+    // create a copy o state
+    let newState = this.state.products;
+
+    // change "toBuy" and "bought" properties for all products to false (it will delete them from shopping list)
+    newState.forEach( current => {
+      current.toBuy = false;
+      current.bought = false;
+    });
+
+    // update the state
+    this.setState({
+      products: newState
+    }) 
   }
 
   render() {
@@ -92,7 +109,7 @@ class App extends React.Component {
                 <PageShop
                   products={this.state.products}
                   typeIDsArray={this.typeIDsArray}
-                  handleAddToShoppingList={this.handleAddToShoppingList}
+                  handleClickOnProduct={this.handleClickOnProduct}
                 />
               )}
             />
@@ -103,7 +120,8 @@ class App extends React.Component {
                 <PageShoppingList
                   products={this.state.products.filter(currentProduct => currentProduct.toBuy === true)}
                   typeIDsArray={this.typeIDsArray}
-                  handleAddToShoppingList={this.handleAddToShoppingList}
+                  handleClickOnProduct={this.handleClickOnProduct}
+                  handleDeleteFromShoppingList={this.handleDeleteFromShoppingList}
                 />
               )}
             />>

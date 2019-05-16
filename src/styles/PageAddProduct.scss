@@ -1,10 +1,10 @@
 .formWrapper {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 90vh;
   background-color: #f7f7f7;
+  min-width: 100vw;
 }
 
 .form {
@@ -12,22 +12,57 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  width: 60vw;
+  min-height: 80vh;
+  width: 90%;
   background-color: #fff;
+  box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
   font-size: 2rem;
   text-transform: uppercase;
 
   &__label {
+    display: block;
+    padding: 1rem 2rem;
     margin-bottom: 1rem;
+    background-color: #93b827;
+    color: #f7f7f7;
+    letter-spacing: 1px;
+    border-radius: 0.5rem;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: #b9680d;
+    }
   }
 
   &__input {
-    margin-bottom: 3rem;
+    display: block;
+    margin-bottom: 5rem;
     padding: 0.5rem 1rem;
+    border: 2px solid #93b827;
+    background-color: white;
+    outline: none;
+    transition: all 0.5s;
+
+    &:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
+    }
   }
 
   &__button {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #f7f7f7;
     padding: 1rem 2rem;
+    background-color: #93b827;
+    border: none;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: #b9680d;
+      transform: scale(1.05);
+      box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
+      letter-spacing: 1px;
+    }
   }
 }

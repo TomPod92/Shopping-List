@@ -39,6 +39,7 @@ class PageAddProduct extends React.Component {
             value={this.state.name}
             onChange={this.handleChange}
             required
+            placeholder='np.chleb tostowy'
             className="form__input"
           />
           {/* Input z działem danego produktu */}

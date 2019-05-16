@@ -1,65 +1,58 @@
 import React from "react";
 import "../styles/section.scss";
 
+// set class Names for single product depending on its state: toBuy, bought, where is it (in Shop or in Shopping List)
+const determineStyles = (toBuy, bought, inShoppingList) => {
+  if (!toBuy && !bought && !inShoppingList) return "default";
+  else if (toBuy && !bought && inShoppingList) return "default";
+  else if (toBuy && !bought && !inShoppingList) return "grey";
+  else if (toBuy && bought && inShoppingList) return "grey";
+  else if (toBuy && bought && !inShoppingList) return "grey";
+};
+//----------------------------------
+
 const Section = props => {
-  const list = props.productList.map(currentProduct => (
+  // const list = props.productList.map(currentProduct => (
+  //   <li
+  //     className={ currentProduct.toBuy ? "toBuy product" : "product"}
+  //     key={currentProduct.id}
+  //     productid={currentProduct.id}
+  //     onClick={ () => props.handleClickOnProduct(currentProduct.id, props.flag)}
+  //   >
+  //     {currentProduct.name}
+  //   </li>
+  // ));
 
-    <li
-      className={currentProduct.toBuy ? "toBuy product" : "product"}
-      key={currentProduct.id}
-      productid={currentProduct.id}
-      onClick={ () => props.handleAddToShoppingList(currentProduct.id, props.flag)}
-    >
-      {currentProduct.name} {`${currentProduct.toBuy}`}
-    </li>
-  ));
-//-----------------------------------------------------------------
-// let list;
-
-// // check which list item is it
-// // if it is in shopping list add "mark as bought" function
-// if("handleMarkAsBought" in props) {
-//     list = props.productList.map(currentProduct => (
-
-//         <li
-//           className={currentProduct.toBuy ? "toBuy product" : "product"}
-//           key={currentProduct.id}
-//           productid={currentProduct.id}
-//           onClick={ () => props.handleMarkAsBought(currentProduct.id)}
-//         >
-//           {currentProduct.name} {`${currentProduct.toBuy}`}
-//         </li>
-//       ));
-// // if it is in all products list add "mark as item to buy" function
-// } else {
-//     list = props.productList.map(currentProduct => (
-
-//         <li
-//           className={currentProduct.toBuy ? "toBuy product" : "product"}
-//           key={currentProduct.id}
-//           productid={currentProduct.id}
-//           onClick={ () => props.handleAddToShoppingList(currentProduct.id)}
-//         >
-//           {currentProduct.name} {`${currentProduct.toBuy}`}
-//         </li>
-//       ));
-// }
-//----------------------------------------------------------
-
-
-  // if that section doesnt have any product inside do not render
-  if(props.productList.length) {
+  const list = props.productList.map(currentProduct => {
     return (
-        <div>
-          <h2>{props.type}</h2>
-          <ul>{list}</ul>
-        </div>
-      );
-  } else {
-      return null
-  }
+      <li
+        className={determineStyles(
+          currentProduct.toBuy,
+          currentProduct.bought,
+          props.inShoppingList
+        )}
+        key={currentProduct.id}
+        productid={currentProduct.id}
+        onClick={() =>
+          props.handleClickOnProduct(currentProduct.id, props.flag)
+        }
+      >
+        {currentProduct.name}
+      </li>
+    );
+  });
 
-  
+  // if that section doesnt have any products inside do not render it
+  if (props.productList.length) {
+    return (
+      <div>
+        <h2>{props.type}</h2>
+        <ul>{list}</ul>
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Section;

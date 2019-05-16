@@ -12,12 +12,13 @@ const PageShoppingList = props => {
             currentProduct => currentProduct.type === currentID
           )}
           handleClickOnProduct={props.handleClickOnProduct}
+          handleRemoveFromShoppingList={props.handleRemoveFromShoppingList}
           flag={"bought"}
           inShoppingList={true}
         />
       ))}
 
-      <button onClick={props.handleDeleteFromShoppingList}>
+      <button onClick={props.handleDeleteShoppingList}>
         Usuń listę zakupów
       </button>
     </div>

@@ -33,11 +33,13 @@ const Section = props => {
         )}
         key={currentProduct.id}
         productid={currentProduct.id}
-        onClick={() =>
-          props.handleClickOnProduct(currentProduct.id, props.flag)
+        onClick={(event) =>
+          props.handleClickOnProduct(currentProduct.id, props.flag, event)
         }
       >
         {currentProduct.name}
+
+        {props.inShoppingList && <button onClick={()=> props.handleRemoveFromShoppingList(currentProduct.id)}>X</button> }
       </li>
     );
   });

@@ -53,7 +53,13 @@ class App extends React.Component {
     }
   };
 
-  handleClickOnProduct = (id, flag) => {
+  handleClickOnProduct = (id, flag, event) => {
+    // check if button in shopping list was clicked
+    // it it was, do not do anything (run its own function)
+    // when you click on that button both function will run otherwise
+    if(event.target.nodeName === "BUTTON") return
+
+    console.log('klikniecie w produkt')
     // find id and index of clicked element
     const index = this.state.products.findIndex( current => current.id === id);
 
@@ -74,7 +80,7 @@ class App extends React.Component {
     })
   };
 
-  handleDeleteFromShoppingList = () => {
+  handleDeleteShoppingList = () => {
     // create a copy o state
     let newState = this.state.products;
 
@@ -88,6 +94,23 @@ class App extends React.Component {
     this.setState({
       products: newState
     }) 
+  }
+
+  handleRemoveFromShoppingList = (id) => {
+    // create a copy of the state
+    const products = this.state.products;
+
+    // find index of clicked product
+    const index = products.findIndex( current => current.id === id);
+
+    // set its "toBuy" and "bought" values to false (remove it from shopping list)
+    products[index].toBuy = false;
+    products[index].bought = false;
+
+    // update the state
+    this.setState( {
+      products
+    })
   }
 
   render() {
@@ -121,7 +144,8 @@ class App extends React.Component {
                   products={this.state.products.filter(currentProduct => currentProduct.toBuy === true)}
                   typeIDsArray={this.typeIDsArray}
                   handleClickOnProduct={this.handleClickOnProduct}
-                  handleDeleteFromShoppingList={this.handleDeleteFromShoppingList}
+                  handleDeleteShoppingList={this.handleDeleteShoppingList}
+                  handleRemoveFromShoppingList= {this.handleRemoveFromShoppingList}
                 />
               )}
             />>

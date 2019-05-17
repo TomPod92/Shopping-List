@@ -6,13 +6,17 @@ nav {
   display: flex;
   list-style: none;
   min-height: 13vh;
-  width: 100%;
+  width: 100vw;
 
   .nav-item {
+    display: block;
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+    // box-sizing: border-box;
+    // border-left: 2px solid #f7f7f7;
+    // border-right: 2px solid #f7f7f7;
     flex: 1;
     background-color: #93b827;
     transition: all 0.5s;
@@ -34,7 +38,7 @@ nav {
 
     .active {
       background-color: #b9680d;
-      transform: scale(1.1);
+      transform: scaleY(1.1);
       height: 100%;
       box-shadow: 0 0 20px #00000073;
       position: relative;

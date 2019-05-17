@@ -13,7 +13,6 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  // min-width: 90vw;
   min-width: 100vw;
   margin: 0 auto;
   background-color: #fff;
@@ -36,6 +35,7 @@
     margin-bottom: 5rem;
     padding: 0.5rem 1rem;
     border: 2px solid #93b827;
+    border-radius: 0.5rem;
     background-color: white;
     outline: none;
     transition: all 0.5s;
@@ -51,12 +51,12 @@
     text-transform: uppercase;
     color: #f7f7f7;
     padding: 1rem 2rem;
-    background-color: #93b827;
+    background-color: #b9680d;
     border: none;
+    border-radius: 0.5rem;
     transition: all 0.5s;
 
     &:hover {
-      background-color: #b9680d;
       transform: scale(1.05);
       box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
       letter-spacing: 1px;

@@ -59,7 +59,6 @@ class App extends React.Component {
     // when you click on that button both function will run otherwise
     if(event.target.nodeName === "BUTTON") return
 
-    console.log('klikniecie w produkt')
     // find id and index of clicked element
     const index = this.state.products.findIndex( current => current.id === id);
 
@@ -115,7 +114,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Navigation />
 
         <section>

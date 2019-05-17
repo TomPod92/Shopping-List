@@ -12,7 +12,6 @@ const determineStyles = (toBuy, bought, inShoppingList) => {
 //----------------------------------
 
 const Section = props => {
-
   const list = props.productList.map(currentProduct => {
     return (
       <li
@@ -23,23 +22,31 @@ const Section = props => {
         )}
         key={currentProduct.id}
         productid={currentProduct.id}
-        onClick={(event) =>
+        onClick={event =>
           props.handleClickOnProduct(currentProduct.id, props.flag, event)
         }
       >
         <span className="section--item__text">{currentProduct.name}</span>
 
-        {props.inShoppingList && <button className="section--item__button" onClick={()=> props.handleRemoveFromShoppingList(currentProduct.id)}>Usuń</button> }
+        {props.inShoppingList && (
+          <button
+            className="section--item__button"
+            onClick={() =>
+              props.handleRemoveFromShoppingList(currentProduct.id)
+            }
+          >
+            Usuń
+          </button>
+        )}
       </li>
     );
   });
 
   // if that section doesnt have any products inside do not render it
   if (props.productList.length) {
-    console.log(props.productList)
     return (
       <div className="section">
-        <h2 className={props.type + " section--header"}>{props.type}</h2> 
+        <h2 className={props.type + " section--header"}>{props.type}</h2>
         {/* className moze miec pare slow oddzielonych spacja */}
         <ul className="section--list">{list}</ul>
       </div>

@@ -13,7 +13,9 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  width: 90%;
+  // min-width: 90vw;
+  min-width: 100vw;
+  margin: 0 auto;
   background-color: #fff;
   box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
   font-size: 2rem;
@@ -27,11 +29,6 @@
     color: #f7f7f7;
     letter-spacing: 1px;
     border-radius: 0.5rem;
-    transition: all 0.5s;
-
-    &:hover {
-      background-color: #b9680d;
-    }
   }
 
   &__input {

@@ -3,25 +3,15 @@ import "../styles/section.scss";
 
 // set class Names for single product depending on its state: toBuy, bought, where is it (in Shop or in Shopping List)
 const determineStyles = (toBuy, bought, inShoppingList) => {
-  if (!toBuy && !bought && !inShoppingList) return "default";
-  else if (toBuy && !bought && inShoppingList) return "default";
-  else if (toBuy && !bought && !inShoppingList) return "grey";
-  else if (toBuy && bought && inShoppingList) return "grey";
-  else if (toBuy && bought && !inShoppingList) return "grey";
+  if (!toBuy && !bought && !inShoppingList) return "default section--item";
+  else if (toBuy && !bought && inShoppingList) return "default section--item";
+  else if (toBuy && !bought && !inShoppingList) return "grey section--item";
+  else if (toBuy && bought && inShoppingList) return "grey section--item";
+  else if (toBuy && bought && !inShoppingList) return "grey section--item";
 };
 //----------------------------------
 
 const Section = props => {
-  // const list = props.productList.map(currentProduct => (
-  //   <li
-  //     className={ currentProduct.toBuy ? "toBuy product" : "product"}
-  //     key={currentProduct.id}
-  //     productid={currentProduct.id}
-  //     onClick={ () => props.handleClickOnProduct(currentProduct.id, props.flag)}
-  //   >
-  //     {currentProduct.name}
-  //   </li>
-  // ));
 
   const list = props.productList.map(currentProduct => {
     return (
@@ -37,19 +27,21 @@ const Section = props => {
           props.handleClickOnProduct(currentProduct.id, props.flag, event)
         }
       >
-        {currentProduct.name}
+        <span className="section--item__text">{currentProduct.name}</span>
 
-        {props.inShoppingList && <button onClick={()=> props.handleRemoveFromShoppingList(currentProduct.id)}>X</button> }
+        {props.inShoppingList && <button className="section--item__button" onClick={()=> props.handleRemoveFromShoppingList(currentProduct.id)}>Usuń</button> }
       </li>
     );
   });
 
   // if that section doesnt have any products inside do not render it
   if (props.productList.length) {
+    console.log(props.productList)
     return (
-      <div>
-        <h2>{props.type}</h2>
-        <ul>{list}</ul>
+      <div className="section">
+        <h2 className={props.type + " section--header"}>{props.type}</h2> 
+        {/* className moze miec pare slow oddzielonych spacja */}
+        <ul className="section--list">{list}</ul>
       </div>
     );
   } else {

@@ -18,9 +18,14 @@ const PageShoppingList = props => {
         />
       ))}
 
-      <button onClick={props.handleDeleteShoppingList}>
-        Usuń listę zakupów
-      </button>
+      {/* display "delete button" only if there are any product in shopping list */}
+      {props.products.length ? <button
+          className="deleteButton"
+          onClick={props.handleDeleteShoppingList}
+        >
+          Usuń listę zakupów
+        </button> : null}
+        
     </div>
   );
 };

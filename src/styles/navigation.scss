@@ -1,7 +1,12 @@
+nav {
+  width: 100vw;
+}
+
 .main-Nav {
   display: flex;
   list-style: none;
-  min-height: 10vh;
+  min-height: 13vh;
+  width: 100%;
 
   .nav-item {
     font-size: 2rem;
@@ -11,6 +16,10 @@
     flex: 1;
     background-color: #93b827;
     transition: all 0.5s;
+
+    &:hover {
+      background-color: #afd63c;
+    }
 
     .link {
       display: flex;

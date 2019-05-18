@@ -113,9 +113,11 @@ class App extends React.Component {
   }
 
   render() {
+
+    const toBuyProducts = this.state.products.filter(current => current.toBuy === true).length;
     return (
       <BrowserRouter basename="/#">
-        <Navigation />
+        <Navigation numberOfProducts={toBuyProducts}/>
 
         <section>
           <Switch>

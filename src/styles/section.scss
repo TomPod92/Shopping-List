@@ -23,12 +23,13 @@
     border-radius: 5px;
     width: 80vw;
     background-color: rgba(148, 184, 39, 0.9);
+    cursor: pointer;
     transition: all 0.5s;
 
-    &:hover {
-      transform: scale(1.005);
-      box-shadow: 1rem 1rem 1rem rgb(190, 190, 190);
-    }
+    // &:hover {
+    //   transform: scale(1.005);
+    //   box-shadow: 1rem 1rem 1rem rgb(190, 190, 190);
+    // }
   }
 
   &--item__text {
@@ -50,6 +51,7 @@
     letter-spacing: 1px;
     font-weight: bold;
     text-transform: uppercase;
+    cursor: pointer;
   }
 }
 

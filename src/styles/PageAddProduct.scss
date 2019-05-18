@@ -47,19 +47,19 @@
   }
 
   &__button {
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-transform: uppercase;
     color: #f7f7f7;
-    padding: 1rem 2rem;
+    padding: 2rem 3rem;
     background-color: #b9680d;
     border: none;
     border-radius: 0.5rem;
     transition: all 0.5s;
 
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
-      letter-spacing: 1px;
-    }
+    // &:hover {
+    //   transform: scale(1.05);
+    //   box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
+    //   letter-spacing: 1px;
+    // }
   }
 }

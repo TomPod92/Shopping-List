@@ -2,6 +2,7 @@ import React from "react";
 import Section from "./Section.js";
 
 const PageShoppingList = props => {
+  console.log(props.products.length)
   return (
     <div>
       {props.typeIDsArray.map((currentID, index) => (
@@ -27,6 +28,8 @@ const PageShoppingList = props => {
           Usuń listę zakupów
         </button>
       ) : null}
+
+      {props.products.length===0 && <div className='userInfo'>Nie masz nic w koszyku   :(</div>}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.scss";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
 import Navigation from "./Navigation.js";
 import PageAddProduct from "./PageAddProduct.js";
 import PageShop from "./PageShop.js";
@@ -266,13 +266,14 @@ class App extends React.Component {
       current => current.toBuy === true
     ).length;
     return (
-      <BrowserRouter basename="/#">
+      <HashRouter>
         <Navigation numberOfProducts={toBuyProducts} />
 
         <section>
           <Switch>
             <Route
-              path="/"
+              // path="/()"
+              path={["/", "/Shopping-List/"]}
               exact
               render={() => (
                 <PageAddProduct handleAddProduct={this.handleAddProduct} />
@@ -304,10 +305,15 @@ class App extends React.Component {
                 />
               )}
             />
-            >
+            {/* potrzebne bo gh-pages zle wyswietla */}
+            {/* <Route
+              render={() => (
+                <PageAddProduct handleAddProduct={this.handleAddProduct} />
+              )}
+            /> */}
           </Switch>
         </section>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

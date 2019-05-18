@@ -9,7 +9,7 @@ class PageAddProduct extends React.Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value.toLowerCase()
     });
   };
 
@@ -39,7 +39,7 @@ class PageAddProduct extends React.Component {
             value={this.state.name}
             onChange={this.handleChange}
             required
-            placeholder='np.chleb tostowy'
+            placeholder="np.chleb tostowy"
             className="form__input"
           />
           {/* Input z działem danego produktu */}

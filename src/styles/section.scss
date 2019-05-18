@@ -37,6 +37,10 @@
     letter-spacing: 2px;
     font-weight: bold;
     text-transform: uppercase;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &--item__button {

@@ -15,10 +15,7 @@ const Section = props => {
   const list = props.productList.map(currentProduct => {
     return (
       <li
-        className={determineStyles(
-          currentProduct.toBuy,
-          currentProduct.bought,
-          props.inShoppingList
+        className={determineStyles(currentProduct.toBuy,currentProduct.bought,props.inShoppingList
         )}
         key={currentProduct.id}
         productid={currentProduct.id}
@@ -28,12 +25,22 @@ const Section = props => {
       >
         <span className="section--item__text">{currentProduct.name}</span>
 
-        {props.inShoppingList && (
+        {/* create button to remove */}
+        {/* if it is in the shopping list page send it "handleRemoveFromShoppingList" function */}
+        {/* if it is in products page send it "handleRemoveFromShop" function */}
+        {props.inShoppingList ? (
           <button
             className="section--item__button"
             onClick={() =>
               props.handleRemoveFromShoppingList(currentProduct.id)
             }
+          >
+            Usuń
+          </button>
+        ) : (
+          <button
+            className="section--item__button"
+            onClick={() => props.handleRemoveFromShop(currentProduct.id)}
           >
             Usuń
           </button>

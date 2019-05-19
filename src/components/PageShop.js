@@ -14,6 +14,7 @@ const PageShop = props => {
           handleClickOnProduct={props.handleClickOnProduct}
           flag={"toBuy"}
           inShoppingList={false}
+          handleRemoveFromShop={props.handleRemoveFromShop}
         />
       ))}
     </div>

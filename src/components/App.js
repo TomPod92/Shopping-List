@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.scss";
-import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import Navigation from "./Navigation.js";
 import PageAddProduct from "./PageAddProduct.js";
 import PageShop from "./PageShop.js";
@@ -242,6 +242,22 @@ class App extends React.Component {
     });
   };
 
+  handleRemoveFromShop = id => {
+    // create a copy of the state
+    const products = this.state.products;
+
+    // find index of clicked product
+    const index = products.findIndex(current => current.id === id);
+
+    // delete it from products list
+    products.splice(index, 1);
+
+    // update the state
+    this.setState({
+      products
+    });
+  };
+
   componentDidUpdate = () => {
     // everytime you add something to the state
     // send whole state to localStorage
@@ -286,6 +302,7 @@ class App extends React.Component {
                   products={this.state.products}
                   typeIDsArray={this.typeIDsArray}
                   handleClickOnProduct={this.handleClickOnProduct}
+                  handleRemoveFromShop={this.handleRemoveFromShop}
                 />
               )}
             />
@@ -305,12 +322,10 @@ class App extends React.Component {
                 />
               )}
             />
-            {/* potrzebne bo gh-pages zle wyswietla */}
-            {/* <Route
-              render={() => (
-                <PageAddProduct handleAddProduct={this.handleAddProduct} />
-              )}
-            /> */}
+            
+            <Route
+              render={() => <div className="userInfo">Ups, coś poszło nie tak :(</div>}
+            />
           </Switch>
         </section>
       </HashRouter>

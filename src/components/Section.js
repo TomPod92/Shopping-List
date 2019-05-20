@@ -53,7 +53,7 @@ const Section = props => {
   if (props.productList.length) {
     return (
       <div className="section">
-        <h2 className={props.type + " section--header"}>{props.type}</h2>
+        <h2 className="section--header">{props.type}</h2>
         {/* className moze miec pare slow oddzielonych spacja */}
         <ul className="section--list">{list}</ul>
       </div>

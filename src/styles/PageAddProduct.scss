@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 90vh;
-  background-color: #f7f7f7;
+  background-color: var(--color-off-white);
   min-width: 100vw;
 }
 
@@ -15,7 +15,7 @@
   min-height: 80vh;
   min-width: 100vw;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: var(--color-off-white);
   box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
   font-size: 2rem;
   text-transform: uppercase;
@@ -24,8 +24,8 @@
     display: block;
     padding: 1rem 2rem;
     margin-bottom: 1rem;
-    background-color: #93b827;
-    color: #f7f7f7;
+    background-color: var(--color-primary-green);
+    color: var(--color-off-white);
     letter-spacing: 1px;
     border-radius: 0.5rem;
   }
@@ -34,7 +34,7 @@
     display: block;
     margin-bottom: 5rem;
     padding: 0.5rem 1rem;
-    border: 2px solid #93b827;
+    border: 2px solid var(--color-primary-green);
     border-radius: 0.5rem;
     background-color: white;
     outline: none;
@@ -49,23 +49,25 @@
   &__button {
     font-size: 2rem;
     text-transform: uppercase;
-    color: #f7f7f7;
+    color: var(--color-off-white);
     padding: 2rem 3rem;
-    background-color: #b9680d;
+    background-color: var(--color-primary-orange);
     border: none;
     border-radius: 0.5rem;
     transition: all 0.5s;
-
-    // &:hover {
-    //   transform: scale(1.05);
-    //   box-shadow: 0 0 3rem rgba(43, 42, 42, 0.2);
-    //   letter-spacing: 1px;
-    // }
   }
 }
 
 @media screen and (max-height: 350px) {
   .form {
     padding-top: 10rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .form__button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 3rem rgba(43, 42, 42, 0.4);
+    letter-spacing: 1px;
   }
 }

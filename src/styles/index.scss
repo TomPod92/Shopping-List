@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-primary-green: #93b827;
+  --color-primary-orange: #b9680d;
+  --color-off-white: #f7f7f7;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -13,7 +19,7 @@ html {
 body {
   font-family: "Lato", sans-serif;
   overflow-x: hidden;
-  background-color: rgb(247, 247, 242);
+  background-color: #f7f7f2;
 }
 
 .root {

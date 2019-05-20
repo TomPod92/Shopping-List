@@ -5,7 +5,7 @@
   &--header {
     padding: 1rem 2rem;
     margin-bottom: 1rem;
-    background-color: rgba(185, 105, 13, 0.95);
+    background-color: var(--color-primary-orange);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 2.2rem;
@@ -22,14 +22,9 @@
     margin: 0.5rem auto;
     border-radius: 5px;
     width: 80vw;
-    background-color: rgba(148, 184, 39, 0.9);
+    background-color: var(--color-primary-green);
     cursor: pointer;
     transition: all 0.5s;
-
-    // &:hover {
-    //   transform: scale(1.005);
-    //   box-shadow: 1rem 1rem 1rem rgb(190, 190, 190);
-    // }
   }
 
   &--item__text {
@@ -47,8 +42,8 @@
     position: absolute;
     right: 2rem;
     padding: 1rem 1.3rem;
-    background-color: rgb(216, 40, 40);
-    border: 3px solid rgb(189, 22, 22);
+    background-color: #d82828;
+    border: none;
     border-radius: 5px;
     color: white;
     font-size: 1rem;
@@ -62,145 +57,48 @@
 .deleteButton {
   display: block;
   position: relative;
-  padding: 1rem 1.3rem;
+  padding: 1rem 1.2rem;
   margin: 8rem auto 3rem auto;
-  background-color: rgb(216, 40, 40);
-  border: 3px solid rgb(189, 22, 22);
+  background-color: #d82828;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
   color: white;
-  font-size: 2.2rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
   transition: all 0.5s;
 }
 
-// ------------------------------
-// styles for every section of products
-
-// .pieczywo {
-//   background-color: #a52a2a;
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(166, 42, 42, 0.6);
-//     color: white;
-//   }
-// }
-
-// .owoce {
-//   background-color: rgb(0, 128, 0);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(0, 128, 0, 0.6);
-//     color: white;
-//   }
-// }
-
-// .nabiał {
-//   background-color: rgb(230, 230, 230);
-//   color: black;
-
-//   & + ul > .section--item {
-//     background-color: rgba(230, 230, 230, 0.6);
-//   }
-// }
-
-// .mięsa {
-//   background-color: rgb(241, 50, 50);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(241, 50, 50, 0.6);
-//     color: white;
-//   }
-// }
-
-// .mrożonki {
-//   background-color: rgb(109, 109, 223);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(109, 109, 223, 0.6);
-//     color: white;
-//   }
-// }
-
-// .słoiki {
-//   background-color: rgb(156, 156, 156);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(156, 156, 156, 0.6);
-//     color: white;
-//   }
-// }
-
-// .kawa {
-//   background-color: rgb(68, 68, 68);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(68, 68, 68, 0.6);
-//     color: white;
-//   }
-// }
-
-// .makarony {
-//   background-color: rgb(236, 236, 40);
-//   color: black;
-
-//   & + ul > .section--item {
-//     background-color: rgba(236, 236, 40, 0.6);
-//     color: black;
-//   }
-// }
-
-// .słodycze {
-//   background-color: rgb(167, 59, 77);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(167, 59, 77, 0.6);
-//     color: white;
-//   }
-// }
-
-// .środki {
-//   background-color: rgb(147, 190, 229);
-//   color: black;
-
-//   & + ul > .section--item {
-//     background-color: rgba(147, 190, 229, 0.6);
-//     color: black;
-//   }
-// }
-
-// .napoje {
-//   background-color: rgb(211, 228, 243);
-//   color: black;
-
-//   & + ul > .section--item {
-//     background-color: rgba(211, 228, 243, 0.6);
-//     color: black;
-//   }
-// }
-
-// .alkohole {
-//   background-color: rgb(247, 181, 60);
-//   color: white;
-
-//   & + ul > .section--item {
-//     background-color: rgba(247, 181, 60, 0.6);
-//     color: white;
-//   }
-// }
-
 .default {
   color: white;
 }
+
 .grey {
   filter: grayscale(80%);
   transform: scale(0.8);
+}
+
+@media screen and (min-width: 800px) {
+  .section--header {
+    width: 70vw;
+    margin: 0 auto 1rem auto;
+    border-radius: 5px;
+  }
+
+  .section--item {
+    width: 50vw;
+
+    &:hover {
+      transform: scale(1.005);
+      box-shadow: 1rem 1rem 1rem rgb(190, 190, 190);
+    }
+  }
+
+  .deleteButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 3rem rgba(43, 42, 42, 0.4);
+    letter-spacing: 1px;
+  }
 }

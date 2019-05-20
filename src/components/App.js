@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/App.scss";
 import { Switch, Route, HashRouter } from "react-router-dom";
 import Navigation from "./Navigation.js";
 import PageAddProduct from "./PageAddProduct.js";
@@ -288,7 +287,6 @@ class App extends React.Component {
         <section>
           <Switch>
             <Route
-              // path="/()"
               path={["/", "/Shopping-List/"]}
               exact
               render={() => (

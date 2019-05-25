@@ -10,7 +10,9 @@ class PageAddProduct extends React.Component {
   handleChange = event => {
     // check if the imput consists only white spaces
     // if it does do not update the state with it
-    if(!event.target.value.trim().length) return    
+    if (!event.target.value.trim().length) {
+      event.target.value = "";
+    }
 
     this.setState({
       [event.target.name]: event.target.value.toLowerCase()

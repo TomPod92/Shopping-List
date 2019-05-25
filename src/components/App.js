@@ -158,7 +158,10 @@ class App extends React.Component {
     // if it doesnt exits
     if (!(index + 1)) {
       // calculate its ID
-      const newID = this.state.products.length;
+      let newID;
+      if(!this.state.products.length) newID = 0;
+      else newID = this.state.products[this.state.products.length - 1].id + 1;
+      
 
       // calculate its type ID
       const newTypeID = this.typeIDsArray.findIndex(
@@ -320,9 +323,11 @@ class App extends React.Component {
                 />
               )}
             />
-            
+
             <Route
-              render={() => <div className="userInfo">Ups, coś poszło nie tak :(</div>}
+              render={() => (
+                <div className="userInfo">Ups, coś poszło nie tak :(</div>
+              )}
             />
           </Switch>
         </section>

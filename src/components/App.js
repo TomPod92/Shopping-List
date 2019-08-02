@@ -4,130 +4,131 @@ import Navigation from "./Navigation.js";
 import PageAddProduct from "./PageAddProduct.js";
 import PageShop from "./PageShop.js";
 import PageShoppingList from "./PageShoppingList.js";
+import database from '../firebase/firebase.js';
 
 class App extends React.Component {
   state = {
     products: [
-      {
-        id: 0,
-        name: "chleb",
-        type: "pieczywo",
-        typeID: 0,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 1,
-        name: "papryka",
-        type: "owoce i warzywa",
-        typeID: 1,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 2,
-        name: "jajka",
-        type: "nabiał",
-        typeID: 2,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 3,
-        name: "szynka",
-        type: "mięsa i sery",
-        typeID: 3,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 4,
-        name: "czosnek",
-        type: "mrożonki i przyprawy",
-        typeID: 4,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 5,
-        name: "fasolka",
-        type: "słoiki i puszki",
-        typeID: 5,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 6,
-        name: "herbata",
-        type: "kawa i herbata",
-        typeID: 6,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 7,
-        name: "ryż",
-        type: "makarony",
-        typeID: 7,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 8,
-        name: "czekolada",
-        type: "słodycze",
-        typeID: 8,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 9,
-        name: "papier toaletowy",
-        type: "środki czystości",
-        typeID: 9,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 10,
-        name: "woda",
-        type: "napoje",
-        typeID: 10,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 11,
-        name: "piwo",
-        type: "alkohole",
-        typeID: 11,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 12,
-        name: "zeszyt",
-        type: "art.papiernicze",
-        typeID: 12,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 13,
-        name: "pasta",
-        type: "kosmetyki",
-        typeID: 13,
-        toBuy: false,
-        bought: false
-      },
-      {
-        id: 14,
-        name: "kapcie",
-        type: "ubrania",
-        typeID: 14,
-        toBuy: false,
-        bought: false
-      }
+      // {
+      //   id: 0,
+      //   name: "chleb",
+      //   type: "pieczywo",
+      //   typeID: 0,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 1,
+      //   name: "papryka",
+      //   type: "owoce i warzywa",
+      //   typeID: 1,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 2,
+      //   name: "jajka",
+      //   type: "nabiał",
+      //   typeID: 2,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 3,
+      //   name: "szynka",
+      //   type: "mięsa i sery",
+      //   typeID: 3,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 4,
+      //   name: "czosnek",
+      //   type: "mrożonki i przyprawy",
+      //   typeID: 4,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 5,
+      //   name: "fasolka",
+      //   type: "słoiki i puszki",
+      //   typeID: 5,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 6,
+      //   name: "herbata",
+      //   type: "kawa i herbata",
+      //   typeID: 6,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 7,
+      //   name: "ryż",
+      //   type: "makarony",
+      //   typeID: 7,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 8,
+      //   name: "czekolada",
+      //   type: "słodycze",
+      //   typeID: 8,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 9,
+      //   name: "papier toaletowy",
+      //   type: "środki czystości",
+      //   typeID: 9,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 10,
+      //   name: "woda",
+      //   type: "napoje",
+      //   typeID: 10,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 11,
+      //   name: "piwo",
+      //   type: "alkohole",
+      //   typeID: 11,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 12,
+      //   name: "zeszyt",
+      //   type: "art.papiernicze",
+      //   typeID: 12,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 13,
+      //   name: "pasta",
+      //   type: "kosmetyki",
+      //   typeID: 13,
+      //   toBuy: false,
+      //   bought: false
+      // },
+      // {
+      //   id: 14,
+      //   name: "kapcie",
+      //   type: "ubrania",
+      //   typeID: 14,
+      //   toBuy: false,
+      //   bought: false
+      // }
     ]
   };
 
@@ -182,6 +183,9 @@ class App extends React.Component {
       this.setState(prevState => ({
         products: [...prevState.products, newProduct]
       }));
+
+      // // add it to firebase
+      // database.ref('products').push(newProduct);
     }
   };
 
@@ -261,22 +265,66 @@ class App extends React.Component {
   };
 
   componentDidUpdate = () => {
+    // everytime you update the state
+    // check if the is something in it
+    if(!this.state.products.length) return
+
+    // if there is, remove everything from database
+    // and send whole "new" state to database
+    database.ref('products').remove()
+      .then( () => {
+        this.state.products.forEach( current => {
+          database.ref('products').push(current)
+        })
+      })
+
     // everytime you add something to the state
     // send whole state to localStorage
-    let state = JSON.stringify(this.state.products);
-    localStorage.setItem("oldState", state);
+    // let state = JSON.stringify(this.state.products);
+    // localStorage.setItem("oldState", state);
+
+    
+    // setTimeout( () => {
+    //   database.ref('products').remove()
+    //     .then( () => {
+    //       this.state.products.forEach( current => {
+    //         database.ref('products').push(current)
+    //       })
+    //     })
+    // }, 500);
   };
 
   componentDidMount = () => {
     // when app is redered for the first time
+    // get everything from the database
+    database.ref('products').once('value')
+      .then( snapshot => {
+
+        const products = [];
+
+        // add everything to the array
+        snapshot.forEach( current => {
+          products.push({...current.val()})
+        });
+
+        // check if that array is empty
+        if(!products) return
+
+        // if it is not, add it to the state
+        this.setState({
+          products
+        })
+      })
+
+    // when app is redered for the first time
     // check if there is something in localStorage
     // if there is update the state
-    let oldState = JSON.parse(localStorage.getItem("oldState"));
-    if (oldState) {
-      this.setState({
-        products: oldState
-      });
-    }
+    // let oldState = JSON.parse(localStorage.getItem("oldState"));
+    // if (oldState) {
+    //   this.setState({
+    //     products: oldState
+    //   });
+    // }
   };
 
   render() {

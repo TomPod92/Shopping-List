@@ -2,6 +2,7 @@
 
 This was my first React aplication ment to teach me basics of React and React Router.
 It was made with **mobile first** approach.
+I have recently added firebase support so all data is stored in there now
 
 In order to see a demo visit [this link](https://tompod92.github.io/Shopping-List/#/pageShop)
 

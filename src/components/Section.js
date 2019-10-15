@@ -20,7 +20,7 @@ const Section = props => {
         key={currentProduct.id}
         productid={currentProduct.id}
         onClick={event =>
-          props.handleClickOnProduct(currentProduct.id, props.flag, event)
+          props.handleClickOnProduct(currentProduct.id, props.flag, currentProduct.firebaseKey, event)
         }
       >
         <span className="section--item__text">{currentProduct.name}</span>
@@ -32,7 +32,7 @@ const Section = props => {
           <button
             className="section--item__button"
             onClick={() =>
-              props.handleRemoveFromShoppingList(currentProduct.id)
+              props.handleRemoveFromShoppingList(currentProduct.id, currentProduct.firebaseKey)
             }
           >
             Usuń
@@ -40,7 +40,7 @@ const Section = props => {
         ) : (
           <button
             className="section--item__button"
-            onClick={() => props.handleRemoveFromShop(currentProduct.id)}
+            onClick={() => props.handleRemoveFromShop(currentProduct.id, currentProduct.firebaseKey)}
           >
             Usuń
           </button>
